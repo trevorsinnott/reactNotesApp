@@ -1,31 +1,29 @@
-import React from "react"
+import React from "react";
 
-class Note extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            noteContent: ""
-        }
-        this.handleChange = this.handleChange.bind(this)
-    }
-
-    handleChange(event) {
-        const {name, value} = event.target
-        this.setState({
-            [name]: value
-        })
-    }
-
-    render() {
-        return(
-            <div className="Note">
-                <form>
-                    <textarea className="noteContent" name="noteContent" value={this.state.noteContent} onChange={this.handleChange}>Hi</textarea>
-                    <h1>{this.state.noteContent}</h1>
-                </form>
-            </div>
-        )
-    }
+function Note(props) {
+  return (
+    <div>
+      <form onBlur={props.handleSubmit}>
+        <label name="createdAt" htmlFor="noteTitle">
+          Created:{" "}
+          <time dateTime={props.data.createdAt}>{props.data.createdAt}</time>
+        </label>
+        <br />
+        <input
+          name="noteTitle"
+          value={props.data.noteTitle}
+          type="text"
+          onChange={props.handleChange}
+        />
+        <br />
+        <textarea
+          name="noteContent"
+          value={props.data.noteContent}
+          onChange={props.handleChange}
+        />
+      </form>
+    </div>
+  );
 }
 
-export default Note
+export default Note;
