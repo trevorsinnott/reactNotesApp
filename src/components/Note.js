@@ -4,21 +4,21 @@ function Note(props) {
   return (
     <div>
       <form onBlur={props.handleSubmit}>
-        <label name="createdAt" htmlFor="noteTitle">
+        <label name="created" htmlFor="title">
           Created:{" "}
-          <time dateTime={props.data.createdAt}>{props.data.createdAt}</time>
+          <time dateTime={props.data.created}>{props.data.createdAt}</time>
         </label>
         <br />
         <input
-          name="noteTitle"
-          value={props.data.noteTitle}
+          name="title"
+          value={props.data.title}
           type="text"
           onChange={props.handleChange}
         />
         <br />
         <textarea
-          name="noteContent"
-          value={props.data.noteContent}
+          name="body"
+          value={props.data.body}
           onChange={props.handleChange}
         />
       </form>
