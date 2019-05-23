@@ -3,7 +3,7 @@ import React from "react";
 function Note(props) {
   return (
     <div>
-      <form key={props.noteKey}>
+      <form>
         <label name="created" htmlFor="title">
           Created:{" "}
           <time dateTime={props.data.created}>{props.data.created}</time>

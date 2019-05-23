@@ -15,25 +15,23 @@ class App extends React.Component {
         },
         {
           created: new Date().toLocaleDateString(),
-          title: "Test Note",
-          body: "Some stuff"
+          title: "Second Note",
+          body: "More stuff"
         }
       ]
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    const { name, value, key } = event.target;
-    console.log(event.target)
+  handleChange = (event, key) => {
+    const { name, value } = event.target;
     const newState = this.state.notes.map((note, index) => {
-      return index === key ? {...note, [name]: value} : note
-    })
-    this.setState({ notes: newState })
-  }
+      return index === key ? { ...note, [name]: value } : note;
+    });
+    this.setState({ notes: newState });
+  };
 
-  handleSubmit(event) {
+  handleSubmit = event => {
     event.preventDefault();
     let newNote = {
       created: new Date().toLocaleDateString(),
@@ -45,14 +43,13 @@ class App extends React.Component {
         notes: prevState.notes.concat(newNote)
       };
     });
-  }
+  };
 
   render() {
     const notes = this.state.notes.map((note, index) => {
       return (
         <Note
           key={index}
-          noteKey={index}
           data={note}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
@@ -61,7 +58,7 @@ class App extends React.Component {
     });
     return (
       <div>
-        <NewNoteButton name handleSubmit={this.handleSubmit} />
+        <NewNoteButton handleSubmit={this.handleSubmit} />
         <br />
         {notes}
       </div>
