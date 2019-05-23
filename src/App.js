@@ -9,18 +9,13 @@ class App extends React.Component {
     this.state = {
       notes: [
         {
+          key: 0,
           created: new Date().toLocaleDateString(),
-          title: "Test Note",
-          body: "Some stuff"
-        },
-        {
-          created: new Date().toLocaleDateString(),
-          title: "Second Note",
-          body: "More stuff"
+          title: "",
+          body: ""
         }
       ]
     };
-    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange = (event, key) => {
@@ -33,7 +28,9 @@ class App extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    const index = this.state.notes.length
     let newNote = {
+      key: index,
       created: new Date().toLocaleDateString(),
       title: "",
       body: ""
@@ -50,6 +47,7 @@ class App extends React.Component {
       return (
         <Note
           key={index}
+          keyNr={index}
           data={note}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}

@@ -11,15 +11,16 @@ function Note(props) {
         <br />
         <input
           name="title"
+          key={props.data.key}
           value={props.data.title}
           type="text"
-          onChange={props.handleChange}
+          onChange={event => props.handleChange(event, props.keyNr)}
         />
         <br />
         <textarea
           name="body"
           value={props.data.body}
-          onChange={props.handleChange}
+          onChange={event => {props.handleChange(event, props.keyNr)}}
         />
       </form>
     </div>
