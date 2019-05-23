@@ -3,10 +3,10 @@ import React from "react";
 function Note(props) {
   return (
     <div>
-      <form onBlur={props.handleSubmit}>
+      <form key={props.noteKey}>
         <label name="created" htmlFor="title">
           Created:{" "}
-          <time dateTime={props.data.created}>{props.data.createdAt}</time>
+          <time dateTime={props.data.created}>{props.data.created}</time>
         </label>
         <br />
         <input
