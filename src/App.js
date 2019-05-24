@@ -42,6 +42,16 @@ class App extends React.Component {
     });
   };
 
+  componentWillMount() {
+    localStorage.getItem('notes') && this.setState({
+      notes: JSON.parse(localStorage.getItem('notes'))
+    })
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    localStorage.setItem('notes', JSON.stringify(nextState.notes));
+  }
+
   render() {
     const notes = this.state.notes.map((note, index) => {
       return (
