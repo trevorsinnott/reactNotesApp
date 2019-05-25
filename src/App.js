@@ -11,8 +11,9 @@ class App extends React.Component {
         {
           key: 0,
           created: new Date().toLocaleDateString(),
-          title: "",
-          body: ""
+          title: "Note 1",
+          body:
+            "## This note can be styled with markdown!  Here's a [cheatsheet.](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)"
         }
       ],
       id: 1
@@ -81,19 +82,22 @@ class App extends React.Component {
   render() {
     const notes = this.state.notes.map(note => {
       return (
-        <Note
-          key={note.key}
-          keyNr={note.key}
-          data={note}
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-        />
+        <div key={note.key}>
+          <Note
+            keyNr={note.key}
+            data={note}
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+          />
+          <hr />
+        </div>
       );
     });
     return (
       <div>
         <NewNoteButton handleSubmit={this.handleSubmit} />
         <br />
+        <hr />
         {notes}
       </div>
     );

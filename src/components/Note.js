@@ -1,5 +1,6 @@
 import React from "react";
 import DeleteNoteButton from "./DeleteNoteButton";
+import DisplayNote from "./DisplayNote";
 
 function Note(props) {
   return (
@@ -30,6 +31,7 @@ function Note(props) {
           keyNr={props.keyNr}
         />
       </form>
+      <DisplayNote data={props.data} />
     </div>
   );
 }
