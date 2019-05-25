@@ -1,4 +1,5 @@
 import React from "react";
+import DeleteNoteButton from "./DeleteNoteButton";
 
 function Note(props) {
   return (
@@ -20,7 +21,13 @@ function Note(props) {
         <textarea
           name="body"
           value={props.data.body}
-          onChange={event => {props.handleChange(event, props.keyNr)}}
+          onChange={event => {
+            props.handleChange(event, props.keyNr);
+          }}
+        />
+        <DeleteNoteButton
+          handleSubmit={props.handleSubmit}
+          keyNr={props.keyNr}
         />
       </form>
     </div>

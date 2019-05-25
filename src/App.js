@@ -14,50 +14,76 @@ class App extends React.Component {
           title: "",
           body: ""
         }
-      ]
+      ],
+      id: 1
     };
   }
 
   handleChange = (event, key) => {
     const { name, value } = event.target;
-    const newState = this.state.notes.map((note, index) => {
-      return index === key ? { ...note, [name]: value } : note;
+    const newState = this.state.notes.map((note) => {
+      return note.key === key ? { ...note, [name]: value } : note;
     });
     this.setState({ notes: newState });
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
-    const index = this.state.notes.length
-    let newNote = {
-      key: index,
+  updateId() {
+    this.setState(prevState => {
+      return{id: Number(prevState.id) + 1}
+    })
+  }
+
+  newNote() {
+    const noteKey = this.state.id;
+    this.updateId()
+    return {
+      key: noteKey,
       created: new Date().toLocaleDateString(),
       title: "",
       body: ""
     };
-    this.setState(prevState => {
-      return {
-        notes: prevState.notes.concat(newNote)
-      };
-    });
+  }
+
+  handleSubmit = (event, key) => {
+    event.preventDefault();
+    const name = event.target.name;
+    if (name === "newNote") {
+      let newNote = this.newNote();
+      this.setState(prevState => {
+        return {
+          notes: prevState.notes.concat(newNote)
+        };
+      });
+    } else {
+      let updatedNotes = this.state.notes.filter(note => {
+        return note.key !== key 
+      })
+      this.setState({notes: updatedNotes})
+    }
   };
 
   componentWillMount() {
-    localStorage.getItem('notes') && this.setState({
-      notes: JSON.parse(localStorage.getItem('notes'))
-    })
+    let notes = JSON.parse(localStorage.getItem("notes"))
+    let id = localStorage.getItem("id")
+    console.log(notes, id)
+    notes &&
+      this.setState({
+        notes: notes,
+        id: id
+      });
   }
 
   componentWillUpdate(nextProps, nextState) {
-    localStorage.setItem('notes', JSON.stringify(nextState.notes));
+    localStorage.setItem("notes", JSON.stringify(nextState.notes));
+    localStorage.setItem("id", (nextState.id))
   }
 
   render() {
-    const notes = this.state.notes.map((note, index) => {
+    const notes = this.state.notes.map((note) => {
       return (
         <Note
-          key={index}
-          keyNr={index}
+          key={note.key}
+          keyNr={note.key}
           data={note}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
