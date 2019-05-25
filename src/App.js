@@ -21,7 +21,7 @@ class App extends React.Component {
 
   handleChange = (event, key) => {
     const { name, value } = event.target;
-    const newState = this.state.notes.map((note) => {
+    const newState = this.state.notes.map(note => {
       return note.key === key ? { ...note, [name]: value } : note;
     });
     this.setState({ notes: newState });
@@ -29,13 +29,13 @@ class App extends React.Component {
 
   updateId() {
     this.setState(prevState => {
-      return{id: Number(prevState.id) + 1}
-    })
+      return { id: Number(prevState.id) + 1 };
+    });
   }
 
   newNote() {
     const noteKey = this.state.id;
-    this.updateId()
+    this.updateId();
     return {
       key: noteKey,
       created: new Date().toLocaleDateString(),
@@ -56,16 +56,16 @@ class App extends React.Component {
       });
     } else {
       let updatedNotes = this.state.notes.filter(note => {
-        return note.key !== key 
-      })
-      this.setState({notes: updatedNotes})
+        return note.key !== key;
+      });
+      this.setState({ notes: updatedNotes });
     }
   };
 
   componentWillMount() {
-    let notes = JSON.parse(localStorage.getItem("notes"))
-    let id = localStorage.getItem("id")
-    console.log(notes, id)
+    let notes = JSON.parse(localStorage.getItem("notes"));
+    let id = localStorage.getItem("id");
+    console.log(notes, id);
     notes &&
       this.setState({
         notes: notes,
@@ -75,11 +75,11 @@ class App extends React.Component {
 
   componentWillUpdate(nextProps, nextState) {
     localStorage.setItem("notes", JSON.stringify(nextState.notes));
-    localStorage.setItem("id", (nextState.id))
+    localStorage.setItem("id", nextState.id);
   }
 
   render() {
-    const notes = this.state.notes.map((note) => {
+    const notes = this.state.notes.map(note => {
       return (
         <Note
           key={note.key}
