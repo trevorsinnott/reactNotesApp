@@ -11,9 +11,9 @@ class App extends React.Component {
         {
           key: 0,
           created: new Date().toLocaleDateString(),
-          title: "Note 1",
           body:
-            "## This note can be styled with markdown!  Here's a [cheatsheet.](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)"
+            "# First Note ## This note can be styled with markdown!  Here's a [cheatsheet.](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)",
+          canEdit: false
         }
       ],
       id: 1
@@ -34,17 +34,6 @@ class App extends React.Component {
     });
   }
 
-  newNote() {
-    const noteKey = this.state.id;
-    this.updateId();
-    return {
-      key: noteKey,
-      created: new Date().toLocaleDateString(),
-      title: "",
-      body: ""
-    };
-  }
-
   handleSubmit = (event, key) => {
     event.preventDefault();
     const name = event.target.name;
@@ -63,10 +52,27 @@ class App extends React.Component {
     }
   };
 
+  toggleDisplay = (key, display) => {
+    let updatedNotes = this.state.notes.map(note => {
+      return note.key === key ? { ...note, canEdit: display } : note;
+    });
+    this.setState({ notes: updatedNotes });
+  };
+
+  newNote() {
+    const noteKey = this.state.id;
+    this.updateId();
+    return {
+      key: noteKey,
+      created: new Date().toLocaleDateString(),
+      title: "",
+      body: "",
+      canEdit: true
+    };
+  }
   componentWillMount() {
     let notes = JSON.parse(localStorage.getItem("notes"));
     let id = localStorage.getItem("id");
-    console.log(notes, id);
     notes &&
       this.setState({
         notes: notes,
@@ -75,6 +81,7 @@ class App extends React.Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
+    console.log(nextState)
     localStorage.setItem("notes", JSON.stringify(nextState.notes));
     localStorage.setItem("id", nextState.id);
   }
@@ -88,6 +95,7 @@ class App extends React.Component {
             data={note}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
+            toggleDisplay={this.toggleDisplay}
           />
           <hr />
         </div>

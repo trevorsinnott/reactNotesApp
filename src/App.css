@@ -1,0 +1,17 @@
+.hide {
+  display: none;
+}
+
+.note {
+  margin: auto;
+  width: 700px;
+  height: 30vw;
+  padding: 10px;
+}
+
+.note textarea {
+    height: 24vw;
+    width: 700px;
+    resize: none;
+    border: none;
+}

@@ -4,21 +4,13 @@ import DisplayNote from "./DisplayNote";
 
 function Note(props) {
   return (
-    <div>
-      <form>
+    <div className="note">
+      <form className={props.data.canEdit ? 'display' : 'hide'} onBlur={() => props.toggleDisplay(props.keyNr, false)}>
         <label name="created" htmlFor="title">
           Created:{" "}
           <time dateTime={props.data.created}>{props.data.created}</time>
         </label>
-        <br />
-        <input
-          name="title"
-          key={props.data.key}
-          value={props.data.title}
-          type="text"
-          onChange={event => props.handleChange(event, props.keyNr)}
-        />
-        <br />
+        <hr />
         <textarea
           name="body"
           value={props.data.body}
@@ -31,7 +23,7 @@ function Note(props) {
           keyNr={props.keyNr}
         />
       </form>
-      <DisplayNote data={props.data} />
+      <DisplayNote data={props.data} keyNr={props.keyNr} toggleDisplay={props.toggleDisplay}/>
     </div>
   );
 }

@@ -5,8 +5,12 @@ function DisplayNote(props) {
   if (props.data) {
     let title = "# " + props.data.title;
     return (
-      <div>
-        <ReactMarkdown source={title} />
+      <div onClick={event => props.toggleDisplay(props.keyNr, true)} className={props.data.canEdit ? 'hide' : 'display'}>
+        <label name="created" htmlFor="title">
+          Created:{" "}
+          <time dateTime={props.data.created}>{props.data.created}</time>
+        </label>
+        <hr />
         <ReactMarkdown source={props.data.body} />
       </div>
     );
