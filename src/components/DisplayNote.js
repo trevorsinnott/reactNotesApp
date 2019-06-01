@@ -3,9 +3,8 @@ import ReactMarkdown from "react-markdown";
 
 function DisplayNote(props) {
   if (props.data) {
-    let title = "# " + props.data.title;
     return (
-      <div onClick={event => props.toggleDisplay(props.keyNr, true)} className={props.data.canEdit ? 'hide' : 'display'}>
+      <div onClick={event => {props.onClick(event)}} className={props.data.canEdit ? 'hide' : 'display'}>
         <label name="created" htmlFor="title">
           Created:{" "}
           <time dateTime={props.data.created}>{props.data.created}</time>

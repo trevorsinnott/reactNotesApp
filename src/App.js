@@ -12,7 +12,7 @@ class App extends React.Component {
           key: 0,
           created: new Date().toLocaleDateString(),
           body:
-            "# First Note ## This note can be styled with markdown!  Here's a [cheatsheet.](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)",
+            "# First Note\n## This note can be styled with markdown!  Here's a [cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).",
           canEdit: false
         }
       ],
@@ -65,9 +65,8 @@ class App extends React.Component {
     return {
       key: noteKey,
       created: new Date().toLocaleDateString(),
-      title: "",
-      body: "",
-      canEdit: true
+      body: "# New Note",
+      canEdit: false
     };
   }
   componentWillMount() {
@@ -81,7 +80,6 @@ class App extends React.Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
-    console.log(nextState)
     localStorage.setItem("notes", JSON.stringify(nextState.notes));
     localStorage.setItem("id", nextState.id);
   }
@@ -96,6 +94,7 @@ class App extends React.Component {
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
             toggleDisplay={this.toggleDisplay}
+            textAreaRef={React.createRef()}
           />
           <hr />
         </div>
