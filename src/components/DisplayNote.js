@@ -4,7 +4,12 @@ import ReactMarkdown from "react-markdown";
 function DisplayNote(props) {
   if (props.data) {
     return (
-      <div onClick={event => {props.onClick(event)}} className={props.data.canEdit ? 'hide' : 'display'}>
+      <div
+        onClick={event => {
+          props.onClick(event);
+        }}
+        className={props.data.canEdit ? "hide" : "display"}
+      >
         <hr />
         <ReactMarkdown source={props.data.body} />
       </div>

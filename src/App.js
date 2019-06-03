@@ -36,7 +36,7 @@ class App extends React.Component {
 
   handleSubmit = (event, key) => {
     event.preventDefault();
-    const name = event.target.name;
+    const name = event.currentTarget.name;
     if (name === "newNote") {
       let newNote = this.newNote();
       this.setState(prevState => {
