@@ -103,7 +103,6 @@ class App extends React.Component {
     return (
       <div>
         <NewNoteButton handleSubmit={this.handleSubmit} />
-        <br />
         <hr />
         {notes}
       </div>

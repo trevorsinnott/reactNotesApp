@@ -3,25 +3,24 @@ import DeleteNoteButton from "./DeleteNoteButton";
 import DisplayNote from "./DisplayNote";
 
 function Note(props) {
-
   function onClick() {
     props.toggleDisplay(props.keyNr, true);
   }
 
   useEffect(() => {
-    props.data.canEdit && props.textAreaRef.current.focus()
-  })
+    props.data.canEdit && props.textAreaRef.current.focus();
+  });
 
   return (
     <div className="note">
+      <span name="created" htmlFor="title">
+        Created: <time dateTime={props.data.created}>{props.data.created}</time>
+      </span>
+      <DeleteNoteButton handleSubmit={props.handleSubmit} keyNr={props.keyNr} />
       <form
         className={props.data.canEdit ? "display" : "hide"}
         onBlur={() => props.toggleDisplay(props.keyNr, false)}
       >
-        <label name="created" htmlFor="title">
-          Created:{" "}
-          <time dateTime={props.data.created}>{props.data.created}</time>
-        </label>
         <hr />
         <textarea
           ref={props.textAreaRef}
@@ -39,11 +38,6 @@ function Note(props) {
         toggleDisplay={props.toggleDisplay}
         onClick={() => onClick()}
       />
-      
-      <DeleteNoteButton
-          handleSubmit={props.handleSubmit}
-          keyNr={props.keyNr}
-        />
     </div>
   );
 }
