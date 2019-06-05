@@ -8,6 +8,7 @@ function DeleteNoteButton(props) {
       key={props.keyNr}
       name="deleteNote"
       onClick={event => props.handleSubmit(event, props.keyNr)}
+      className="deleteNoteButton"
     >
       <FontAwesomeIcon icon={faTrashAlt} size="2x" />
     </button>

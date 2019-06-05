@@ -94,7 +94,6 @@ class App extends React.Component {
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
             toggleDisplay={this.toggleDisplay}
-            textAreaRef={React.createRef()}
           />
           <hr />
         </div>
