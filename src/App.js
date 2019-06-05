@@ -6,6 +6,8 @@ import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Box from "@material-ui/core/box";
 
 class App extends React.Component {
   constructor() {
@@ -16,7 +18,7 @@ class App extends React.Component {
           key: 0,
           created: new Date().toLocaleDateString(),
           body:
-            "# First Note\n## This note can be styled with markdown!  Here's a [cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).",
+          "# First Note\n\n## Click on a note to edit!\n\n### This note can be formatted using Markdown. You can:\n- Make lists\n- Link to cool sites like [Material Ui](https://material-ui.com/)\n- Make your text:\n  1. *Exciting* or\n  2. **Eye catching**\n\n\nOr you can just write down what you're thinking before you forget.\n\nEnjoy!",
           canEdit: false
         }
       ],
@@ -104,14 +106,18 @@ class App extends React.Component {
       );
     });
     return (
-      <Container>
-        <AppBar position="sticky">
+      <React.Fragment>
+        <CssBaseline />
+        <AppBar>
           <Toolbar>
             <NewNoteButton handleSubmit={this.handleSubmit} />
           </Toolbar>
         </AppBar>
-        {notes}
-      </Container>
+        <Toolbar />
+        <Container maxWidth="md">
+          <Box my={2}>{notes}</Box>
+        </Container>
+      </React.Fragment>
     );
   }
 }
