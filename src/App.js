@@ -2,6 +2,10 @@ import React from "react";
 import "./App.css";
 import Note from "./components/Note";
 import NewNoteButton from "./components/NewNoteButton";
+import Container from "@material-ui/core/Container";
+import Divider from "@material-ui/core/Divider";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
 
 class App extends React.Component {
   constructor() {
@@ -95,16 +99,19 @@ class App extends React.Component {
             handleSubmit={this.handleSubmit}
             toggleDisplay={this.toggleDisplay}
           />
-          <hr />
+          <Divider />
         </div>
       );
     });
     return (
-      <div>
-        <NewNoteButton handleSubmit={this.handleSubmit} />
-        <hr />
+      <Container>
+        <AppBar position="sticky">
+          <Toolbar>
+            <NewNoteButton handleSubmit={this.handleSubmit} />
+          </Toolbar>
+        </AppBar>
         {notes}
-      </div>
+      </Container>
     );
   }
 }

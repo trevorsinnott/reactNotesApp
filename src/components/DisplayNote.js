@@ -1,5 +1,5 @@
 import React from "react";
-import CardContent from '@material-ui/core/CardContent';
+import CardContent from "@material-ui/core/CardContent";
 import Markdown from "./Markdown";
 
 function DisplayNote(props) {
@@ -11,10 +11,7 @@ function DisplayNote(props) {
         }}
         className={props.data.canEdit ? "hide" : "display"}
       >
-          <Markdown>
-            {props.data.body}
-          </Markdown>
-
+        <Markdown>{props.data.body}</Markdown>
       </CardContent>
     );
   } else {

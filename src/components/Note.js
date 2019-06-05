@@ -2,8 +2,8 @@ import React from "react";
 import DeleteNoteButton from "./DeleteNoteButton";
 import DisplayNote from "./DisplayNote";
 import TextField from "@material-ui/core/TextField";
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
 
 function Note(props) {
   return (
@@ -12,16 +12,15 @@ function Note(props) {
         subheader={props.data.created}
         action={
           <DeleteNoteButton
-          handleSubmit={props.handleSubmit}
-          keyNr={props.keyNr}
-        />
+            handleSubmit={props.handleSubmit}
+            keyNr={props.keyNr}
+          />
         }
       >
         <span name="created" htmlFor="title">
           Created:{" "}
           <time dateTime={props.data.created}>{props.data.created}</time>
         </span>
-        
       </CardHeader>
       {props.data.canEdit ? (
         <form onBlur={() => props.toggleDisplay(props.keyNr, false)}>

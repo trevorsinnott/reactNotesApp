@@ -1,17 +1,16 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import Button from "@material-ui/core/Button";
 
 function DeleteNoteButton(props) {
   return (
-    <button
+    <Button
       key={props.keyNr}
       name="deleteNote"
       onClick={event => props.handleSubmit(event, props.keyNr)}
       className="deleteNoteButton"
     >
-      <FontAwesomeIcon icon={faTrashAlt} size="2x" />
-    </button>
+      Delete
+    </Button>
   );
 }
 

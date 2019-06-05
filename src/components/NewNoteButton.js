@@ -1,17 +1,17 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
+import Fab from "@material-ui/core/Fab";
 
 function NewNoteButton(props) {
   return (
-    <button
+    <Fab
+      variant="extended"
       name="newNote"
       onClick={event => {
         props.handleSubmit(event);
       }}
     >
-      <FontAwesomeIcon icon={faPlusSquare} size="2x" className="newNote" />
-    </button>
+      New Note
+    </Fab>
   );
 }
 
