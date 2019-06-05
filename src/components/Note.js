@@ -5,11 +5,13 @@ import TextField from "@material-ui/core/TextField";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import Divider from '@material-ui/core/Divider';
+import Box from "@material-ui/core/box";
 
 
 function Note(props) {
   return (
-    <Card>
+    <Box my={2}>
+    <Card >
       <CardHeader
         subheader={props.data.created}
         action={
@@ -49,6 +51,7 @@ function Note(props) {
         />
       )}
     </Card>
+    </Box>
   );
 }
 

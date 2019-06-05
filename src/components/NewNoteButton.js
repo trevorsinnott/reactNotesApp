@@ -7,7 +7,7 @@ function NewNoteButton(props) {
       variant="extended"
       name="newNote"
       onClick={event => {
-        props.handleSubmit(event);
+        props.createNote(event);
       }}
     >
       New Note
