@@ -5,7 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import Divider from "@material-ui/core/Divider";
-import Box from "@material-ui/core/box";
+import Box from "@material-ui/core/Box";
 
 function Note(props) {
   return (
