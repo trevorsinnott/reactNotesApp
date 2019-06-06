@@ -5,7 +5,7 @@ import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
 import Toolbar from "@material-ui/core/Toolbar";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Box from "@material-ui/core/box";
+import Box from "@material-ui/core/Box";
 import TopAppBar from "./components/TopAppBar";
 
 class App extends React.Component {
