@@ -4,6 +4,7 @@ import Fab from "@material-ui/core/Fab";
 function NewNoteButton(props) {
   return (
     <Fab
+      size="medium"
       variant="extended"
       name="newNote"
       onClick={event => {
