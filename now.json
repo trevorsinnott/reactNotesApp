@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "name": "my-react-app",
+    "name": "notes-app",
     "builds": [
       {
         "src": "package.json",
@@ -27,9 +27,6 @@
         "src": "/(.*)",
         "headers": { "cache-control": "s-maxage=0" },
         "dest": "/index.html"
-      }
-    ],
-    "scripts": {
-        "now-dev": "react-scripts start"
-      }
+      } 
+    ]
   }
