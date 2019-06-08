@@ -8,6 +8,7 @@ import {
   ClickAwayListener
 } from "@material-ui/core";
 import NoteHeader from "./NoteHeader";
+import DeleteNoteButton from "./DeleteNoteButton";
 
 function NoteTextfield(props) {
   return (
@@ -41,6 +42,7 @@ function NoteTextfield(props) {
           >
             Save
           </Button>
+          <DeleteNoteButton {...props}/>
         </CardActions>
       </div>
     </ClickAwayListener>
