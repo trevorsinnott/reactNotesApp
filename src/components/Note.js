@@ -10,15 +10,11 @@ function Note(props) {
   return (
     <Box my={2}>
       <Card>
-        <NoteHeader {...props} />
-        <Divider variant="middle" />
         {props.data.canEdit ? (
           <NoteTextfield {...props} />
         ) : (
           <DisplayNote
-            data={props.data}
-            keyNr={props.keyNr}
-            toggleDisplay={props.toggleDisplay}
+            {...props}
             onClick={() => props.toggleDisplay(props.keyNr, true)}
           />
         )}

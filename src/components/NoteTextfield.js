@@ -1,9 +1,12 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import { CardContent } from "@material-ui/core";
+import NoteHeader from "./NoteHeader";
 
 function NoteTextfield(props) {
   return (
+      <>
+    <NoteHeader {...props} />
     <CardContent>
       <form onBlur={() => props.toggleDisplay(props.keyNr, false)}>
         <TextField
@@ -20,6 +23,7 @@ function NoteTextfield(props) {
         />
       </form>
     </CardContent>
+    </>
   );
 }
 
