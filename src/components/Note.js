@@ -25,7 +25,7 @@ function Note(props) {
             <time dateTime={props.data.created}>{props.data.created}</time>
           </span>
         </CardHeader>
-        <Divider variant="inset" />
+        <Divider variant="middle" />
         {props.data.canEdit ? (
           <form onBlur={() => props.toggleDisplay(props.keyNr, false)}>
             <TextField
