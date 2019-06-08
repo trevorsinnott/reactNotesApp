@@ -1,15 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import DisplayNote from "./DisplayNote";
 import Card from "@material-ui/core/Card";
 import Box from "@material-ui/core/Box";
 import NoteTextfield from "./NoteTextfield";
 
 function Note(props) {
+  const [initialized, setInitialized] = useState(false)
   let card = React.createRef()
 
   useEffect(() => {
-    window.scrollTo(0, card.current.offsetTop)
-  }, [])
+    console.log(card.current.clientHeight)
+    !initialized && window.scrollTo(0, card.current.offsetTop)
+    setInitialized(true)
+  })
 
   return (
     <Box my={2}>
