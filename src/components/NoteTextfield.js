@@ -12,12 +12,12 @@ import DeleteNoteButton from "./DeleteNoteButton";
 
 function NoteTextfield(props) {
   return (
-    <ClickAwayListener
-      onClickAway={() => props.toggleDisplay(props.keyNr, false)}
-    >
-      <div>
-        <NoteHeader {...props} />
-        <CardContent>
+    <div>
+      <NoteHeader {...props} />
+      <CardContent>
+        <ClickAwayListener
+          onClickAway={() => props.toggleDisplay(props.keyNr, false)}
+        >
           <form>
             <TextField
               fullWidth={true}
@@ -32,20 +32,20 @@ function NoteTextfield(props) {
               }}
             />
           </form>
-        </CardContent>
-        <Divider />
-        <CardActions>
-          <Button
-            variant="contained"
-            size="small"
-            onClick={() => props.toggleDisplay(props.keyNr, false)}
-          >
-            Save
-          </Button>
-          <DeleteNoteButton {...props}/>
-        </CardActions>
-      </div>
-    </ClickAwayListener>
+        </ClickAwayListener>
+      </CardContent>
+      <Divider />
+      <CardActions>
+        <Button
+          variant="contained"
+          size="small"
+          onClick={() => props.toggleDisplay(props.keyNr, false)}
+        >
+          Save
+        </Button>
+        <DeleteNoteButton {...props} />
+      </CardActions>
+    </div>
   );
 }
 

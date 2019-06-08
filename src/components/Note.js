@@ -5,14 +5,14 @@ import Box from "@material-ui/core/Box";
 import NoteTextfield from "./NoteTextfield";
 
 function Note(props) {
-  const [initialized, setInitialized] = useState(false)
-  let card = React.createRef()
+  const [initialized, setInitialized] = useState(false);
+  let card = React.createRef();
 
   useEffect(() => {
-    console.log(card.current.clientHeight)
-    !initialized && window.scrollTo(0, card.current.offsetTop)
-    setInitialized(true)
-  })
+    console.log(card.current.clientHeight);
+    !initialized && window.scrollTo(0, card.current.offsetTop);
+    setInitialized(true);
+  });
 
   return (
     <Box my={2}>
