@@ -24,7 +24,7 @@ function Note(props) {
       <Card
         ref={card}
         style={{
-          minHeight: cardHeight + "px",
+          minHeight: props.data.canEdit ? cardHeight + "px" : "194px",
           display: "flex",
           flexDirection: "column"
         }}
