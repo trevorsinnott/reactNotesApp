@@ -57,7 +57,8 @@ class App extends React.Component {
     }
   };
 
-  toggleDisplay = (key, display) => {
+  toggleDisplay = (event, key, display) => {
+    event.preventDefault()
     let updatedNotes = this.state.notes.map(note => {
       return note.key === key ? { ...note, canEdit: display } : note;
     });

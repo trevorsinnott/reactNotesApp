@@ -6,23 +6,28 @@ import NoteTextfield from "./NoteTextfield";
 
 function Note(props) {
   const [initialized, setInitialized] = useState(false);
+  const [cardHeight, setCardHeight] = useState(null)
+
   let card = React.createRef();
 
   useEffect(() => {
-    console.log(card.current.clientHeight);
     !initialized && window.scrollTo(0, card.current.offsetTop);
     setInitialized(true);
-  });
+  }, [initialized, card]);
+
+  useEffect(() => {
+    !props.data.canEdit && setCardHeight(card.current.clientHeight)
+  }, [cardHeight, card, props.data.canEdit])
 
   return (
-    <Box my={2}>
-      <Card ref={card}>
+    <Box my={2} display="flex" flexDirection="column">
+      <Card ref={card} style={{minHeight: cardHeight + "px"}}>
         {props.data.canEdit ? (
           <NoteTextfield {...props} />
         ) : (
           <DisplayNote
             {...props}
-            onClick={() => props.toggleDisplay(props.keyNr, true)}
+            onClick={(event) => props.toggleDisplay(event, props.keyNr, true)}
           />
         )}
       </Card>

@@ -5,18 +5,20 @@ import {
   Divider,
   Button,
   CardActions,
-  ClickAwayListener
+  ClickAwayListener,
+  Box
 } from "@material-ui/core";
 import NoteHeader from "./NoteHeader";
 import DeleteNoteButton from "./DeleteNoteButton";
 
 function NoteTextfield(props) {
   return (
-    <div>
+    <Box>
       <NoteHeader {...props} />
+      <Box flexGrow={1}>
       <CardContent>
         <ClickAwayListener
-          onClickAway={() => props.toggleDisplay(props.keyNr, false)}
+          onClickAway={(event) => props.toggleDisplay(event, props.keyNr, false)}
         >
           <form>
             <TextField
@@ -24,7 +26,7 @@ function NoteTextfield(props) {
               multiline={true}
               variant="outlined"
               autoFocus={true}
-              onClick={() => props.toggleDisplay(props.keyNr, true)}
+              onClick={(event) => props.toggleDisplay(event, props.keyNr, true)}
               name="body"
               value={props.data.body}
               onChange={event => {
@@ -34,18 +36,21 @@ function NoteTextfield(props) {
           </form>
         </ClickAwayListener>
       </CardContent>
-      <Divider />
-      <CardActions>
-        <Button
-          variant="contained"
-          size="small"
-          onClick={() => props.toggleDisplay(props.keyNr, false)}
-        >
-          Save
-        </Button>
-        <DeleteNoteButton {...props} />
-      </CardActions>
-    </div>
+      </Box>
+      <Box alignSelf="flex-end">
+        <Divider />
+        <CardActions>
+          <Button
+            variant="contained"
+            size="small"
+            onClick={(event) => props.toggleDisplay(event, props.keyNr, false)}
+          >
+            Save
+          </Button>
+          <DeleteNoteButton {...props} />
+        </CardActions>
+      </Box>
+    </Box>
   );
 }
 
