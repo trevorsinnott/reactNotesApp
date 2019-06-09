@@ -14,9 +14,15 @@ function DisplayNote(props) {
           onClick={event => {
             props.onClick(event);
           }}
+          style={{
+            flexGrow: "1",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start"
+          }}
         >
           <NoteHeader {...props} />
-          <CardContent className={props.data.canEdit ? "hide" : "display"}>
+          <CardContent style={{ flexGrow: "1" }}>
             <Markdown>{props.data.body}</Markdown>
           </CardContent>
         </CardActionArea>
