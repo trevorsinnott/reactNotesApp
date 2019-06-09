@@ -6,7 +6,7 @@ import NoteTextfield from "./NoteTextfield";
 
 function Note(props) {
   const [initialized, setInitialized] = useState(false);
-  const [cardHeight, setCardHeight] = useState(null);
+  const [cardHeight, setCardHeight] = useState(194);
 
   let card = React.createRef();
 
