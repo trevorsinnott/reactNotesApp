@@ -35,7 +35,7 @@ function NoteTextfield(props) {
         </ClickAwayListener>
       </CardContent>
       <Divider />
-      <CardActions>
+      <CardActions style={{display: "flex", justifyContent: "flex-end"}}>
         <Button
           variant="contained"
           size="small"

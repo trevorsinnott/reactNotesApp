@@ -27,7 +27,7 @@ function DisplayNote(props) {
           </CardContent>
         </CardActionArea>
         <Divider />
-        <CardActions>
+        <CardActions style={{display: "flex", justifyContent: "flex-end"}}>
           <EditNoteButton
             onClick={event => {
               props.onClick(event);
