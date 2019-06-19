@@ -11,7 +11,7 @@ function Note(props) {
   let card = React.createRef();
 
   useEffect(() => {
-    !initialized && window.scrollTo(0, card.current.offsetTop);
+    !initialized && !props.data.canEdit && window.scrollTo(0, card.current.offsetTop);
     setInitialized(true);
   }, [initialized, card]);
 
