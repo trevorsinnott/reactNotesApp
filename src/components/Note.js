@@ -11,9 +11,11 @@ function Note(props) {
   let card = React.createRef();
 
   useEffect(() => {
-    !initialized && !props.data.canEdit && window.scrollTo(0, card.current.offsetTop);
+    !initialized &&
+      !props.data.canEdit &&
+      window.scrollTo(0, card.current.offsetTop);
     setInitialized(true);
-  }, [initialized, card]);
+  }, [initialized, card, props.data.canEdit]);
 
   useEffect(() => {
     !props.data.canEdit && setCardHeight(card.current.clientHeight);
