@@ -17,7 +17,7 @@
       },
       { "src": "/favicon.ico", "dest": "/favicon.ico" },
       { "src": "/icon-192.png", "dest": "/icon-192.png" },
-      { "src": "/favicon.ico", "dest": "/favicon.ico" },
+      { "src": "/web_hi_res_512.png", "dest": "/web_hi_res_512.png" },
       { "src": "/asset-manifest.json", "dest": "/asset-manifest.json" },
       { "src": "/manifest.json", "dest": "/manifest.json" },
       { "src": "/precache-manifest.(.*)", "dest": "/precache-manifest.$1" },
