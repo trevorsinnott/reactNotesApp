@@ -1,17 +1,18 @@
 import React from "react";
 import NewNoteButton from "./NewNoteButton";
-import AppBar from "@material-ui/core/AppBar";
-import Typography from "@material-ui/core/Typography";
-import Toolbar from "@material-ui/core/Toolbar";
-import { makeStyles } from "@material-ui/core/styles";
+// import AppBar from "@mui/material/AppBar";
+// import Typography from "@mui/material/Typography";
+// import Toolbar from "@mui/material/Toolbar";
+// import makeStyles from '@mui/styles/makeStyles';
+import { AppBar, Typography, Toolbar, makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   title: {
-    flexGrow: 1
-  }
+    flexGrow: 1,
+  },
 }));
 
 function TopAppBar(props) {

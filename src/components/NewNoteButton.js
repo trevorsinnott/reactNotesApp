@@ -1,5 +1,6 @@
 import React from "react";
-import Fab from "@material-ui/core/Fab";
+// import Fab from "@mui/material/Fab";
+import { Fab } from "@material-ui/core";
 
 function NewNoteButton(props) {
   return (
@@ -7,7 +8,7 @@ function NewNoteButton(props) {
       size="medium"
       variant="extended"
       name="newNote"
-      onClick={event => {
+      onClick={(event) => {
         props.createNote(event);
       }}
     >

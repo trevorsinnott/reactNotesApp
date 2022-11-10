@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import DisplayNote from "./DisplayNote";
-import Card from "@material-ui/core/Card";
-import Box from "@material-ui/core/Box";
+// import Card from "@mui/material/Card";
+// import Box from "@mui/material/Box";
 import NoteTextfield from "./NoteTextfield";
+import { Card, Box } from "@material-ui/core";
 
 function Note(props) {
   const [initialized, setInitialized] = useState(false);
@@ -28,7 +29,7 @@ function Note(props) {
         style={{
           minHeight: props.data.canEdit ? cardHeight + "px" : "194px",
           display: "flex",
-          flexDirection: "column"
+          flexDirection: "column",
         }}
       >
         {props.data.canEdit ? (
@@ -36,7 +37,7 @@ function Note(props) {
         ) : (
           <DisplayNote
             {...props}
-            onClick={event => props.toggleDisplay(event, props.keyNr, true)}
+            onClick={(event) => props.toggleDisplay(event, props.keyNr, true)}
           />
         )}
       </Card>

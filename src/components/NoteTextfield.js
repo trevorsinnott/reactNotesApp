@@ -1,14 +1,22 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField";
+// import TextField from "@mui/material/TextField";
+// import {
+//   CardContent,
+//   Divider,
+//   Button,
+//   CardActions,
+//   ClickAwayListener
+// } from "@mui/material";
+import NoteHeader from "./NoteHeader";
+import DeleteNoteButton from "./DeleteNoteButton";
 import {
+  TextField,
   CardContent,
   Divider,
   Button,
   CardActions,
-  ClickAwayListener
+  ClickAwayListener,
 } from "@material-ui/core";
-import NoteHeader from "./NoteHeader";
-import DeleteNoteButton from "./DeleteNoteButton";
 
 function NoteTextfield(props) {
   return (
@@ -16,7 +24,9 @@ function NoteTextfield(props) {
       <NoteHeader {...props} />
       <CardContent style={{ flexGrow: "1" }}>
         <ClickAwayListener
-          onClickAway={event => props.toggleDisplay(event, props.keyNr, false)}
+          onClickAway={(event) =>
+            props.toggleDisplay(event, props.keyNr, false)
+          }
         >
           <form>
             <TextField
@@ -24,10 +34,10 @@ function NoteTextfield(props) {
               multiline={true}
               variant="outlined"
               autoFocus={true}
-              onClick={event => props.toggleDisplay(event, props.keyNr, true)}
+              onClick={(event) => props.toggleDisplay(event, props.keyNr, true)}
               name="body"
               value={props.data.body}
-              onChange={event => {
+              onChange={(event) => {
                 props.handleChange(event, props.keyNr);
               }}
             />
@@ -35,11 +45,11 @@ function NoteTextfield(props) {
         </ClickAwayListener>
       </CardContent>
       <Divider />
-      <CardActions style={{display: "flex", justifyContent: "flex-end"}}>
+      <CardActions style={{ display: "flex", justifyContent: "flex-end" }}>
         <Button
           variant="contained"
           size="small"
-          onClick={event => props.toggleDisplay(event, props.keyNr, false)}
+          onClick={(event) => props.toggleDisplay(event, props.keyNr, false)}
         >
           Save
         </Button>

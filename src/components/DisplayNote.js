@@ -1,8 +1,14 @@
 import React from "react";
-import CardContent from "@material-ui/core/CardContent";
+// import CardContent from "@mui/material/CardContent";
+import {
+  CardContent,
+  Divider,
+  CardActionArea,
+  CardActions,
+} from "@material-ui/core";
 import Markdown from "./Markdown";
 import NoteHeader from "./NoteHeader";
-import { Divider, CardActionArea, CardActions } from "@material-ui/core";
+// import { Divider, CardActionArea, CardActions } from "@mui/material";
 import DeleteNoteButton from "./DeleteNoteButton";
 import EditNoteButton from "./EditNoteButton";
 
@@ -11,14 +17,14 @@ function DisplayNote(props) {
     return (
       <>
         <CardActionArea
-          onClick={event => {
+          onClick={(event) => {
             props.onClick(event);
           }}
           style={{
             flexGrow: "1",
             display: "flex",
             flexDirection: "column",
-            alignItems: "flex-start"
+            alignItems: "flex-start",
           }}
         >
           <NoteHeader {...props} />
@@ -27,9 +33,9 @@ function DisplayNote(props) {
           </CardContent>
         </CardActionArea>
         <Divider />
-        <CardActions style={{display: "flex", justifyContent: "flex-end"}}>
+        <CardActions style={{ display: "flex", justifyContent: "flex-end" }}>
           <EditNoteButton
-            onClick={event => {
+            onClick={(event) => {
               props.onClick(event);
             }}
           />

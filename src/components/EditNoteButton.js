@@ -1,4 +1,5 @@
 import React from "react";
+// import { Button } from "@mui/material";
 import { Button } from "@material-ui/core";
 
 function EditNoteButton(props) {
@@ -6,7 +7,7 @@ function EditNoteButton(props) {
     <Button
       variant="contained"
       size="small"
-      onClick={event => {
+      onClick={(event) => {
         props.onClick(event);
       }}
     >

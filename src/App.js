@@ -1,11 +1,18 @@
 import React from "react";
 import "./App.css";
 import Note from "./components/Note";
-import Container from "@material-ui/core/Container";
-import Divider from "@material-ui/core/Divider";
-import Toolbar from "@material-ui/core/Toolbar";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Box from "@material-ui/core/Box";
+// import Container from "@mui/material/Container";
+import {
+  Divider,
+  Container,
+  Toolbar,
+  CssBaseline,
+  Box,
+} from "@material-ui/core";
+// import Divider from "@mui/material/Divider";
+// import Toolbar from "@mui/material/Toolbar";
+// import CssBaseline from "@mui/material/CssBaseline";
+// import Box from "@mui/material/Box";
 import TopAppBar from "./components/TopAppBar";
 
 class App extends React.Component {
@@ -16,25 +23,24 @@ class App extends React.Component {
         {
           key: 0,
           created: new Date().toLocaleDateString(),
-          body:
-            "# First Note\n\n## Click on a note to edit!\n\n### This note can be formatted using Markdown. You can:\n- Make lists\n- Link to cool sites like [Material Ui](https://material-ui.com/)\n- Make your text:\n  1. *Exciting* or\n  2. **Eye catching**\n\n\nOr you can just write down what you're thinking before you forget.\n\nEnjoy!",
-          canEdit: false
-        }
+          body: "# First Note\n\n## Click on a note to edit!\n\n### This note can be formatted using Markdown. You can:\n- Make lists\n- Link to cool sites like [Material Ui](https://material-ui.com/)\n- Make your text:\n  1. *Exciting* or\n  2. **Eye catching**\n\n\nOr you can just write down what you're thinking before you forget.\n\nEnjoy!",
+          canEdit: false,
+        },
       ],
-      id: 1
+      id: 1,
     };
   }
 
   handleChange = (event, key) => {
     const { name, value } = event.target;
-    const newState = this.state.notes.map(note => {
+    const newState = this.state.notes.map((note) => {
       return note.key === key ? { ...note, [name]: value } : note;
     });
     this.setState({ notes: newState });
   };
 
   updateId() {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       return { id: Number(prevState.id) + 1 };
     });
   }
@@ -44,13 +50,13 @@ class App extends React.Component {
     const name = event.currentTarget.name;
     if (name === "newNote") {
       let newNote = this.newNote();
-      this.setState(prevState => {
+      this.setState((prevState) => {
         return {
-          notes: prevState.notes.concat(newNote)
+          notes: prevState.notes.concat(newNote),
         };
       });
     } else {
-      let updatedNotes = this.state.notes.filter(note => {
+      let updatedNotes = this.state.notes.filter((note) => {
         return note.key !== key;
       });
       this.setState({ notes: updatedNotes });
@@ -59,7 +65,7 @@ class App extends React.Component {
 
   toggleDisplay = (event, key, display) => {
     event.preventDefault();
-    let updatedNotes = this.state.notes.map(note => {
+    let updatedNotes = this.state.notes.map((note) => {
       return note.key === key ? { ...note, canEdit: display } : note;
     });
     this.setState({ notes: updatedNotes });
@@ -72,7 +78,7 @@ class App extends React.Component {
       key: noteKey,
       created: new Date().toLocaleDateString(),
       body: "# New Note",
-      canEdit: false
+      canEdit: false,
     };
   }
   componentWillMount() {
@@ -81,7 +87,7 @@ class App extends React.Component {
     notes &&
       this.setState({
         notes: notes,
-        id: id
+        id: id,
       });
   }
 
