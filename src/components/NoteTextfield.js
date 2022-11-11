@@ -7,7 +7,7 @@ import {
   Button,
   CardActions,
   ClickAwayListener,
-} from "@material-ui/core";
+} from "@mui/material";
 
 function NoteTextfield(props) {
   return (

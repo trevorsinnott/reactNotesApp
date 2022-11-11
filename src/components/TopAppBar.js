@@ -1,23 +1,36 @@
 import NewNoteButton from "./NewNoteButton";
+import { styled } from '@mui/material/styles';
 // import AppBar from "@mui/material/AppBar";
 // import Typography from "@mui/material/Typography";
 // import Toolbar from "@mui/material/Toolbar";
 // import makeStyles from '@mui/styles/makeStyles';
-import { AppBar, Typography, Toolbar, makeStyles } from "@material-ui/core";
+import { AppBar, Typography, Toolbar } from "@mui/material";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
+const PREFIX = 'TopAppBar';
+
+const classes = {
+  root: `${PREFIX}-root`,
+  title: `${PREFIX}-title`
+};
+
+const Root = styled('div')((
+  {
+    theme
+  }
+) => ({
+  [`&.${classes.root}`]: {
     flexGrow: 1,
   },
-  title: {
+
+  [`& .${classes.title}`]: {
     flexGrow: 1,
-  },
+  }
 }));
 
 function TopAppBar(props) {
-  const classes = useStyles();
+
   return (
-    <div className={classes.root}>
+    <Root className={classes.root}>
       <AppBar>
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
@@ -26,7 +39,7 @@ function TopAppBar(props) {
           <NewNoteButton createNote={props.createNote} />
         </Toolbar>
       </AppBar>
-    </div>
+    </Root>
   );
 }
 

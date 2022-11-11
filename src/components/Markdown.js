@@ -1,14 +1,25 @@
 import ReactMarkdown from "markdown-to-jsx";
+import { styled } from '@mui/material/styles';
 // import withStyles from '@mui/styles/withStyles';
 // import Typography from "@mui/material/Typography";
 // import Link from "@mui/material/Link";
-import { Typography, Link, withStyles } from "@material-ui/core";
+import { Typography, Link } from "@mui/material";
 
-const styles = (theme) => ({
-  listItem: {
+const PREFIX = 'Markdown';
+
+const classes = {
+  listItem: `${PREFIX}-listItem`
+};
+
+const StyledReactMarkdown = styled(ReactMarkdown)((
+  {
+    theme
+  }
+) => ({
+  [`& .${classes.listItem}`]: {
     marginTop: theme.spacing(1),
-  },
-});
+  }
+}));
 
 const options = {
   overrides: {
@@ -31,7 +42,7 @@ const options = {
     p: { component: (props) => <Typography paragraph {...props} /> },
     a: { component: Link },
     li: {
-      component: withStyles(styles)(({ classes, ...props }) => (
+      component: (({  ...props }) => (
         <li className={classes.listItem}>
           <Typography component="span" {...props} />
         </li>
@@ -41,5 +52,5 @@ const options = {
 };
 
 export default function Markdown(props) {
-  return <ReactMarkdown options={options} {...props} />;
+  return <StyledReactMarkdown options={options} {...props} />;
 }

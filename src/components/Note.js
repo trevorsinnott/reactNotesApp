@@ -3,7 +3,7 @@ import DisplayNote from "./DisplayNote";
 // import Card from "@mui/material/Card";
 // import Box from "@mui/material/Box";
 import NoteTextfield from "./NoteTextfield";
-import { Card, Box } from "@material-ui/core";
+import { Card, Box } from "@mui/material";
 
 function Note(props) {
   const [initialized, setInitialized] = useState(false);

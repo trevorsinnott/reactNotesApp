@@ -1,4 +1,4 @@
-import { CardContent, Divider, CardActionArea, CardActions } from "@material-ui/core";
+import { CardContent, Divider, CardActionArea, CardActions } from "@mui/material";
 import Markdown from "./Markdown";
 import NoteHeader from "./NoteHeader";
 // import { Divider, CardActionArea, CardActions } from "@mui/material";
