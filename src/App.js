@@ -1,4 +1,4 @@
-import { Component, Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import "./App.css";
 import Note from "./components/Note";
 // import Container from "@mui/material/Container";
@@ -92,8 +92,8 @@ import TopAppBar from "./components/TopAppBar";
 //   }
 
 //   UNSAFE_componentWillUpdate(nextProps, nextState) {
-//     localStorage.setItem("notes", JSON.stringify(nextState.notes));
-//     localStorage.setItem("id", nextState.id);
+// localStorage.setItem("notes", JSON.stringify(nextState.notes));
+// localStorage.setItem("id", nextState.id);
 //   }
 
 //   render() {
@@ -155,6 +155,11 @@ export default function App(params) {
     setNotes(savedNotes);
     setId(savedId);
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes));
+    localStorage.setItem("id", id);
+  }, [notes, id]);
 
   function handleSubmit(event, key) {
     event.preventDefault();
