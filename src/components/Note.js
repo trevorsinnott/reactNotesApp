@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { createRef, useEffect, useState } from "react";
 import DisplayNote from "./DisplayNote";
 // import Card from "@mui/material/Card";
 // import Box from "@mui/material/Box";
@@ -9,7 +9,7 @@ function Note(props) {
   const [initialized, setInitialized] = useState(false);
   const [cardHeight, setCardHeight] = useState(194);
 
-  let card = React.createRef();
+  let card = createRef();
 
   useEffect(() => {
     !initialized &&

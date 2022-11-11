@@ -1,12 +1,3 @@
-import React from "react";
-// import TextField from "@mui/material/TextField";
-// import {
-//   CardContent,
-//   Divider,
-//   Button,
-//   CardActions,
-//   ClickAwayListener
-// } from "@mui/material";
 import NoteHeader from "./NoteHeader";
 import DeleteNoteButton from "./DeleteNoteButton";
 import {

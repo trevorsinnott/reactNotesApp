@@ -1,5 +1,3 @@
-import React from "react";
-// import Fab from "@mui/material/Fab";
 import { Fab } from "@material-ui/core";
 
 function NewNoteButton(props) {

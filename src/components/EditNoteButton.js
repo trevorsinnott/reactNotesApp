@@ -1,5 +1,3 @@
-import React from "react";
-// import { Button } from "@mui/material";
 import { Button } from "@material-ui/core";
 
 function EditNoteButton(props) {

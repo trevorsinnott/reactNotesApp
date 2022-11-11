@@ -1,5 +1,3 @@
-import React from "react";
-// import CardHeader from "@mui/material/CardHeader";
 import { CardHeader } from "@material-ui/core";
 
 function NoteHeader(props) {

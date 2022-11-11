@@ -1,4 +1,4 @@
-import React from "react";
+import { Component, Fragment } from "react";
 import "./App.css";
 import Note from "./components/Note";
 // import Container from "@mui/material/Container";
@@ -15,7 +15,7 @@ import {
 // import Box from "@mui/material/Box";
 import TopAppBar from "./components/TopAppBar";
 
-class App extends React.Component {
+class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -81,7 +81,7 @@ class App extends React.Component {
       canEdit: false,
     };
   }
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     let notes = JSON.parse(localStorage.getItem("notes"));
     let id = localStorage.getItem("id");
     notes &&
@@ -91,7 +91,7 @@ class App extends React.Component {
       });
   }
 
-  componentWillUpdate(nextProps, nextState) {
+  UNSAFE_componentWillUpdate(nextProps, nextState) {
     localStorage.setItem("notes", JSON.stringify(nextState.notes));
     localStorage.setItem("id", nextState.id);
   }
@@ -122,14 +122,14 @@ class App extends React.Component {
       );
     });
     return (
-      <React.Fragment>
+      <Fragment>
         <CssBaseline />
         <TopAppBar createNote={this.handleSubmit} />
         <Toolbar />
         <Container maxWidth="md">
           <Box my={2}>{notes}</Box>
         </Container>
-      </React.Fragment>
+      </Fragment>
     );
   }
 }

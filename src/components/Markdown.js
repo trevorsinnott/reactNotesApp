@@ -1,4 +1,3 @@
-import React from "react";
 import ReactMarkdown from "markdown-to-jsx";
 // import withStyles from '@mui/styles/withStyles';
 // import Typography from "@mui/material/Typography";

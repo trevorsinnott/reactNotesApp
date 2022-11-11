@@ -1,11 +1,4 @@
-import React from "react";
-// import CardContent from "@mui/material/CardContent";
-import {
-  CardContent,
-  Divider,
-  CardActionArea,
-  CardActions,
-} from "@material-ui/core";
+import { CardContent, Divider, CardActionArea, CardActions } from "@material-ui/core";
 import Markdown from "./Markdown";
 import NoteHeader from "./NoteHeader";
 // import { Divider, CardActionArea, CardActions } from "@mui/material";

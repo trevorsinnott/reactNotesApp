@@ -1,4 +1,3 @@
-import React from "react";
 import NewNoteButton from "./NewNoteButton";
 // import AppBar from "@mui/material/AppBar";
 // import Typography from "@mui/material/Typography";
