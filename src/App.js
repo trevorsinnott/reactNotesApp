@@ -3,7 +3,7 @@ import "./App.css";
 import Note from "./components/Note";
 import { Divider, Container, Toolbar, CssBaseline, Box } from "@mui/material";
 import TopAppBar from "./components/TopAppBar";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
 
 const theme = createTheme();
 
@@ -95,13 +95,15 @@ export default function App(params) {
   });
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <TopAppBar createNote={handleSubmit} />
-      <Toolbar />
-      <Container maxWidth="md">
-        <Box my={2}>{currentNotes}</Box>
-      </Container>
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <TopAppBar createNote={handleSubmit} />
+        <Toolbar />
+        <Container maxWidth="md">
+          <Box my={2}>{currentNotes}</Box>
+        </Container>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 }
