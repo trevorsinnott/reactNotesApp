@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 import Note from "./components/Note";
 import { Divider, Container, Toolbar, CssBaseline, Box } from "@mui/material";
 import TopAppBar from "./components/TopAppBar";
-import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
+import {
+  ThemeProvider,
+  StyledEngineProvider,
+  createTheme,
+} from "@mui/material/styles";
 
 const theme = createTheme();
 
