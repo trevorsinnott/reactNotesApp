@@ -26,8 +26,10 @@ export default function App(params) {
     const savedNotes = JSON.parse(localStorage.getItem("notes"));
     const savedId = localStorage.getItem("id");
 
-    setNotes(savedNotes);
-    setId(savedId);
+    return () => {
+      setNotes(savedNotes);
+      setId(savedId);
+    };
   }, []);
 
   useEffect(() => {
