@@ -37,26 +37,26 @@ export default function App(params) {
     localStorage.setItem("id", id);
   }, [notes, id]);
 
-  function handleSubmit(event, key) {
-    event.preventDefault();
-    const name = event.currentTarget.name;
+  // function handleSubmit(event, key) {
+  //   event.preventDefault();
+  //   const name = event.currentTarget.name;
 
-    if (name === "newNote") {
-      const newNote = {
-        key: id,
-        created: new Date().toLocaleDateString(),
-        body: "# New Note",
-        canEdit: false,
-      };
-      setId(id + 1);
-      setNotes(notes.concat(newNote));
-    } else {
-      let updatedNotes = notes.filter((note) => {
-        return note.key !== key;
-      });
-      setNotes(updatedNotes);
-    }
-  }
+  //   if (name === "newNote") {
+  //     const newNote = {
+  //       key: id,
+  //       created: new Date().toLocaleDateString(),
+  //       body: "# New Note",
+  //       canEdit: false,
+  //     };
+  //     setId(id + 1);
+  //     setNotes(notes.concat(newNote));
+  //   } else {
+  //     let updatedNotes = notes.filter((note) => {
+  //       return note.key !== key;
+  //     });
+  //     setNotes(updatedNotes);
+  //   }
+  // }
 
   function handleChange(event, key) {
     const { name, value } = event.target;
@@ -81,7 +81,7 @@ export default function App(params) {
           keyNr={note.key}
           data={note}
           handleChange={handleChange}
-          handleSubmit={handleSubmit}
+          // handleSubmit={handleSubmit}
           toggleDisplay={toggleDisplay}
         />
       </div>
@@ -92,7 +92,7 @@ export default function App(params) {
           keyNr={note.key}
           data={note}
           handleChange={handleChange}
-          handleSubmit={handleSubmit}
+          // handleSubmit={handleSubmit}
           toggleDisplay={toggleDisplay}
         />
       </div>
@@ -103,7 +103,7 @@ export default function App(params) {
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <TopAppBar createNote={handleSubmit} />
+        <TopAppBar notes={notes} setNotes={setNotes} />
         <Toolbar />
         <Container maxWidth="md">
           <Box my={2}>{currentNotes}</Box>

@@ -1,46 +1,46 @@
-import NewNoteButton from "./NewNoteButton";
-import { styled } from '@mui/material/styles';
-// import AppBar from "@mui/material/AppBar";
-// import Typography from "@mui/material/Typography";
-// import Toolbar from "@mui/material/Toolbar";
-// import makeStyles from '@mui/styles/makeStyles';
-import { AppBar, Typography, Toolbar } from "@mui/material";
+import { AppBar, Typography, Toolbar, Button, Box } from "@mui/material";
+import { db } from "../db";
 
-const PREFIX = 'TopAppBar';
+export default function TopAppBar({ notes, setNotes }) {
+  async function handleClick(event) {
+    event.preventDefault();
 
-const classes = {
-  root: `${PREFIX}-root`,
-  title: `${PREFIX}-title`
-};
+    const created = new Date().toLocaleDateString();
+    const body = "#New Note";
+    const canEdit = true;
 
-const Root = styled('div')((
-  {
-    theme
+    try {
+      const key = await db.notes.add({
+        created,
+        body,
+        canEdit,
+      });
+
+      const newNote = {
+        key: key,
+        created: created,
+        body: body,
+        canEdit: canEdit,
+      };
+
+      setNotes(notes.concat(newNote));
+    } catch (error) {
+      console.log("An error occured");
+    }
   }
-) => ({
-  [`&.${classes.root}`]: {
-    flexGrow: 1,
-  },
-
-  [`& .${classes.title}`]: {
-    flexGrow: 1,
-  }
-}));
-
-function TopAppBar(props) {
 
   return (
-    <Root className={classes.root}>
+    <Box sx={{ flexGrow: 1 }}>
       <AppBar>
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Notes
           </Typography>
-          <NewNoteButton createNote={props.createNote} />
+          <Button color="inherit" onClick={handleClick}>
+            New Note
+          </Button>
         </Toolbar>
       </AppBar>
-    </Root>
+    </Box>
   );
 }
-
-export default TopAppBar;
