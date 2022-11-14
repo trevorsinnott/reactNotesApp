@@ -8,7 +8,7 @@ import {
   createTheme,
 } from "@mui/material/styles";
 import { firebase_app } from "./api/firebase";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 const theme = createTheme();
 
@@ -43,7 +43,7 @@ export default function App(params) {
     localStorage.setItem("id", id);
   }, [notes, id]);
 
-  function handleSubmit(event, key) {
+  async function handleSubmit(event, key) {
     event.preventDefault();
     const name = event.currentTarget.name;
 
@@ -54,8 +54,16 @@ export default function App(params) {
         body: "# New Note",
         canEdit: false,
       };
+
       setId(id + 1);
       setNotes(notes.concat(newNote));
+
+      try {
+        const firebaseNote = await addDoc(collection(db, "notes"), newNote);
+        console.log("Added new note: " + firebaseNote);
+      } catch (error) {
+        console.error("Error adding document: ", error);
+      }
     } else {
       let updatedNotes = notes.filter((note) => {
         return note.key !== key;
