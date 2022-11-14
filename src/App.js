@@ -7,10 +7,16 @@ import {
   StyledEngineProvider,
   createTheme,
 } from "@mui/material/styles";
+import { firebase_app } from "./api/firebase";
+import { getFirestore } from "firebase/firestore";
 
 const theme = createTheme();
 
 export default function App(params) {
+  const db = getFirestore(firebase_app);
+
+  console.log("Database: " + db);
+
   const [notes, setNotes] = useState([
     {
       key: 0,
